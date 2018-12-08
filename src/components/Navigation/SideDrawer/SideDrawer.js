@@ -9,7 +9,7 @@ const sideDrawer = props => {
       <div>
         <Logo />
       </div>
-
+      <hr />
       <nav>
         <NavigationItems />
       </nav>
