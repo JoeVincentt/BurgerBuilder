@@ -11,3 +11,9 @@
 .Logo img {
   height: 45px;
 }
+
+@media (min-width: 500px) {
+  .Logo {
+    margin-left: 150px;
+  }
+}
