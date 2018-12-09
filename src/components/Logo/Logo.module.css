@@ -1,11 +1,12 @@
 .Logo {
   background-color: white;
   padding: 8px;
-  height: 60px;
+  height: 50px;
   box-sizing: border-box;
   border-radius: 20px;
   border: 2px solid yellow;
   margin-bottom: 5px;
+  margin-top: 10px;
 }
 
 .Logo img {
@@ -14,8 +15,8 @@
 
 @media (min-width: 500px) {
   .Logo {
-    margin-top: 10px;
-    margin-left: 170px;
+    position: relative;
+    margin-left: 570%;
     height: 45px;
     width: auto;
   }
