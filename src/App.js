@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Route, Switch } from "react-router-dom";
 
 import "./App.css";
 import Layout from "./hoc/Layout/Layout";
@@ -14,9 +15,10 @@ class App extends Component {
       <div>
         <Layout>
           {this.state.show ? (
-            <div>
-              <BurgerBuilder /> <Checkout />
-            </div>
+            <Switch>
+              <Route path="/checkout" component={Checkout} />
+              <Route exact path="/" component={BurgerBuilder} />
+            </Switch>
           ) : null}
         </Layout>
       </div>
