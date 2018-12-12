@@ -46,32 +46,37 @@ class ContactData extends Component {
 
   render() {
     let form = (
-      <form>
-        <input
-          className={classes.Input}
-          type="text"
-          name="name"
-          placeholder="Your name"
-        />
-        <input
-          className={classes.Input}
-          type="text"
-          name="street"
-          placeholder="Your street name"
-        />
-        <input
-          className={classes.Input}
-          type="text"
-          name="postalCode"
-          placeholder="Postal Code"
-        />
-        <input
-          className={classes.Input}
-          type="email"
-          name="email"
-          placeholder="Your email"
-        />
-      </form>
+      <div>
+        <form>
+          <input
+            className={classes.Input}
+            type="text"
+            name="name"
+            placeholder="Your name"
+          />
+          <input
+            className={classes.Input}
+            type="text"
+            name="street"
+            placeholder="Your street name"
+          />
+          <input
+            className={classes.Input}
+            type="text"
+            name="postalCode"
+            placeholder="Postal Code"
+          />
+          <input
+            className={classes.Input}
+            type="email"
+            name="email"
+            placeholder="Your email"
+          />
+        </form>
+        <Button btnType="Success" clicked={this.orderHandler}>
+          ORDER
+        </Button>
+      </div>
     );
     if (this.state.loading) {
       form = <Spinner />;
@@ -80,9 +85,6 @@ class ContactData extends Component {
       <div className={classes.ContactData}>
         <h4>Enter your contact Data</h4>
         {form}
-        <Button btnType="Success" clicked={this.orderHandler}>
-          ORDER
-        </Button>
       </div>
     );
   }

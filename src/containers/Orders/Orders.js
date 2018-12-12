@@ -19,14 +19,12 @@ class Orders extends Component {
             ...res.data[key],
             id: key
           });
-          console.log(fetchedOrders);
         }
         this.setState({ loading: false, orders: fetchedOrders });
       })
       .catch(err => {
         this.setState({ loading: false });
       });
-    console.log(this.state);
   }
 
   render() {
