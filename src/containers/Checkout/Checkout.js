@@ -5,7 +5,7 @@ import ContactData from "./ContactData/ContactData";
 
 class Checkout extends Component {
   state = {
-    ingredients: null,
+    ingredients: {},
     totalPrice: 0
   };
 
@@ -20,6 +20,7 @@ class Checkout extends Component {
         ingredients[param[0]] = +param[1];
       }
     }
+    console.log(ingredients);
     this.setState({ ingredients: ingredients, totalPrice: price });
   }
 
