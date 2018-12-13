@@ -30,3 +30,7 @@
   border: 1px solid red;
   background-color: #e69c76;
 }
+.ValidationError {
+  color: red;
+  margin: 5px 0;
+}
