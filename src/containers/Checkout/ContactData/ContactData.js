@@ -14,7 +14,11 @@ class ContactData extends Component {
           type: "text",
           placeholder: "Your Name"
         },
-        value: ""
+        value: "",
+        validation: {
+          required: true
+        },
+        valid: false
       },
       street: {
         elementType: "input",
@@ -22,7 +26,11 @@ class ContactData extends Component {
           type: "text",
           placeholder: "Your Street Name"
         },
-        value: ""
+        value: "",
+        validation: {
+          required: true
+        },
+        valid: false
       },
       zipCode: {
         elementType: "input",
@@ -30,7 +38,13 @@ class ContactData extends Component {
           type: "text",
           placeholder: "Your ZIPCode"
         },
-        value: ""
+        value: "",
+        validation: {
+          required: true,
+          minLength: 5,
+          maxLength: 5
+        },
+        valid: false
       },
       country: {
         elementType: "input",
@@ -38,7 +52,11 @@ class ContactData extends Component {
           type: "text",
           placeholder: "Your Country Name"
         },
-        value: ""
+        value: "",
+        validation: {
+          required: true
+        },
+        valid: false
       },
       email: {
         elementType: "input",
@@ -46,7 +64,11 @@ class ContactData extends Component {
           type: "email",
           placeholder: "Your Email"
         },
-        value: ""
+        value: "",
+        validation: {
+          required: true
+        },
+        valid: false
       },
       deliveryMethod: {
         elementType: "select",
@@ -71,7 +93,6 @@ class ContactData extends Component {
         formElementIdentifier
       ].value;
     }
-    console.log(formData);
     const order = {
       ingredients: this.props.ingredients,
       price: this.props.price,
@@ -89,6 +110,21 @@ class ContactData extends Component {
       });
   };
 
+  checkValidity(value, rules) {
+    let isValid = false;
+
+    if (rules.required) {
+      isValid = value.trim() !== "";
+    }
+    if (rules.minLength) {
+      isValid = value.length >= rules.minLength;
+    }
+    if (rules.maxLength) {
+      isValid = value.length <= rules.maxLength;
+    }
+    return isValid;
+  }
+
   inputChangedHandler = (e, inputIdentifier) => {
     const updatedOrderForm = {
       ...this.state.orderForm
@@ -97,7 +133,12 @@ class ContactData extends Component {
       ...updatedOrderForm[inputIdentifier]
     };
     updatedFormElement.value = e.target.value;
+    updatedFormElement.valid = this.checkValidity(
+      updatedFormElement.value,
+      updatedFormElement.validation
+    );
     updatedOrderForm[inputIdentifier] = updatedFormElement;
+    console.log(updatedFormElement);
     this.setState({ orderForm: updatedOrderForm });
   };
 
