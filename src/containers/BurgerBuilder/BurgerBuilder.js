@@ -12,21 +12,10 @@ import * as burgerBuilderActions from "../../store/actions/index";
 
 class BurgerBuilder extends Component {
   state = {
-    purchasing: false,
-    loading: false,
-    error: false
+    purchasing: false
   };
 
-  componentDidMount() {
-    // axios
-    //   .get("https://burgerbuilder-by-eb.firebaseio.com/ingredients.json")
-    //   .then(response => {
-    //     this.setState({ ingredients: response.data });
-    //   })
-    //   .catch(error => {
-    //     this.setState({ error: true });
-    //   });
-  }
+  componentDidMount() {}
 
   updatePurchaseState(ingredients) {
     const sum = Object.keys(ingredients)
@@ -91,10 +80,6 @@ class BurgerBuilder extends Component {
           price={this.props.totalPrice}
         />
       );
-    }
-
-    if (this.state.loading) {
-      orderSummary = <Spinner />;
     }
 
     return (
