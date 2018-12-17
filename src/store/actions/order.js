@@ -85,3 +85,35 @@ export const fetchOrders = () => {
       });
   };
 };
+
+export const deleteOrdersSuccess = orders => {
+  console.log("SUCCESSFULY DELETED");
+};
+export const deleteOrdersFail = error => {
+  return {
+    type: actionTypes.DELETE_ORDERS_FAIL,
+    error: error
+  };
+};
+
+export const deleteOrdersStart = () => {
+  return {
+    type: actionTypes.DELETE_ORDERS_START
+  };
+};
+
+export const deleteOrder = (id, orders) => {
+  return dispatch => {
+    dispatch(deleteOrdersStart());
+    axios
+      .delete(`/orders/${id}.json`)
+      .then(res => {
+        console.log("[DELETE Orders] DATA:", res);
+        console.log("[DELETE Orders] DATA:", res.data);
+        dispatch(deleteOrdersSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(deleteOrdersFail(err));
+      });
+  };
+};

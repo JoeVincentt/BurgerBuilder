@@ -29,6 +29,14 @@ const order = props => {
   });
   return (
     <div className={classes.Order}>
+      {" "}
+      <div
+        id="delete"
+        style={{ float: "right", paddingBottom: "40px", cursor: "pointer" }}
+        onClick={props.clicked}
+      >
+        X
+      </div>
       <p>Ingredients: {ingredientOutput}</p>
       <p>
         Price: <strong>USD {Number.parseFloat(props.price).toFixed(2)}</strong>
