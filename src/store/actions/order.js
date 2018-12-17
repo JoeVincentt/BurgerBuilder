@@ -44,9 +44,17 @@ export const purchaseInit = () => {
 };
 
 export const fetchOrdersSuccess = orders => {
+  const fetchedOrders = [];
+  for (let key in orders) {
+    fetchedOrders.push({
+      ...orders[key],
+      id: key
+    });
+  }
+  console.log("[fetchOrderSuccess] ORDERS: ", fetchedOrders);
   return {
     type: actionTypes.FETCH_ORDERS_SUCCESS,
-    orders: orders
+    orders: fetchedOrders
   };
 };
 export const fetchOrdersFail = error => {
@@ -68,14 +76,9 @@ export const fetchOrders = () => {
     axios
       .get("/orders.json")
       .then(res => {
-        const fetchedOrders = [];
-        for (let key in res.data) {
-          fetchedOrders.push({
-            ...res.data[key],
-            id: key
-          });
-        }
-        dispatch(fetchOrdersSuccess(fetchedOrders));
+        console.log("[fetchOrders] DATA:", res.data);
+
+        dispatch(fetchOrdersSuccess(res.data));
       })
       .catch(err => {
         dispatch(fetchOrdersFail(err));
