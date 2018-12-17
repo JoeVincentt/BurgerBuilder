@@ -37,7 +37,7 @@ const deleteOrdersStart = (state, action) => {
   return updateObject(state, { loading: true });
 };
 const deleteOrdersSuccess = (state, action) => {
-  return updateObject(state, { orders: action.orders, loading: false });
+  return updateObject(state, { loading: false });
 };
 const deleteOrderFail = (state, action) => {
   return updateObject(state, { loading: false });

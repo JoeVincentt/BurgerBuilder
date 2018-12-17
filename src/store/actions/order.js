@@ -88,6 +88,7 @@ export const fetchOrders = () => {
 
 export const deleteOrdersSuccess = orders => {
   console.log("SUCCESSFULY DELETED");
+  return fetchOrders();
 };
 export const deleteOrdersFail = error => {
   return {

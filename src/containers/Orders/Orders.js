@@ -14,7 +14,7 @@ class Orders extends Component {
   render() {
     let orders = <Spinner />;
     if (!this.props.loading) {
-      orders = this.props.orders.map(order => (
+      return (orders = this.props.orders.map(order => (
         <Order
           key={order.id}
           ingredients={order.ingredients}
@@ -23,7 +23,7 @@ class Orders extends Component {
             this.props.onDeleteOrder(order.id);
           }}
         />
-      ));
+      )));
     }
     return <div>{orders}</div>;
   }
