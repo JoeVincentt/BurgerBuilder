@@ -31,7 +31,7 @@ export const auth = (email, password) => {
     };
     axios
       .post(
-        "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyCustomToken?key=AIzaSyCQeFJ8DUx2N6KdpG8osYV_MmyvUU0t6g4",
+        "https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyCQeFJ8DUx2N6KdpG8osYV_MmyvUU0t6g4",
         authData
       )
       .then(res => {
