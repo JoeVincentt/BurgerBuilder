@@ -86,9 +86,9 @@ export const fetchOrders = token => {
   };
 };
 
-export const deleteOrdersSuccess = orders => {
+export const deleteOrdersSuccess = (orders, token) => {
   console.log("SUCCESSFULY DELETED");
-  return fetchOrders();
+  return fetchOrders(token);
 };
 export const deleteOrdersFail = error => {
   return {
@@ -103,15 +103,15 @@ export const deleteOrdersStart = () => {
   };
 };
 
-export const deleteOrder = (id, orders) => {
+export const deleteOrder = (id, token) => {
   return dispatch => {
     dispatch(deleteOrdersStart());
     axios
-      .delete(`/orders/${id}.json`)
+      .delete(`/orders/${id}.json?auth=${token}`)
       .then(res => {
         console.log("[DELETE Orders] DATA:", res);
         console.log("[DELETE Orders] DATA:", res.data);
-        dispatch(deleteOrdersSuccess(res.data));
+        dispatch(deleteOrdersSuccess(res.data, token));
       })
       .catch(err => {
         dispatch(deleteOrdersFail(err));
