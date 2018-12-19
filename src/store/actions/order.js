@@ -50,7 +50,6 @@ export const fetchOrdersSuccess = orders => {
       id: key
     });
   }
-
   return {
     type: actionTypes.FETCH_ORDERS_SUCCESS,
     orders: fetchedOrders
@@ -69,7 +68,7 @@ export const fetchOrdersStart = () => {
   };
 };
 
-export const fetchOrders = (orders, token, userId) => {
+export const fetchOrders = (token, userId) => {
   return dispatch => {
     dispatch(fetchOrdersStart());
     const queryParams = `?auth=${token}&orderBy="userId"&equalTo="${userId}"`;
@@ -84,8 +83,8 @@ export const fetchOrders = (orders, token, userId) => {
   };
 };
 
-export const deleteOrdersSuccess = (orders, token, userId) => {
-  return fetchOrders(orders, token, userId);
+export const deleteOrdersSuccess = (token, userId) => {
+  return fetchOrders(token, userId);
 };
 export const deleteOrdersFail = error => {
   return {
@@ -106,7 +105,7 @@ export const deleteOrder = (id, token, userId) => {
     axios
       .delete(`/orders/${id}.json?auth=${token}`)
       .then(res => {
-        dispatch(deleteOrdersSuccess(res.data, token, userId));
+        dispatch(deleteOrdersSuccess(token, userId));
       })
       .catch(err => {
         dispatch(deleteOrdersFail(err));

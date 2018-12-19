@@ -46,7 +46,8 @@ const mapDispatchToProps = dispatch => {
   return {
     onFetchOrders: (token, userId) =>
       dispatch(actions.fetchOrders(token, userId)),
-    onDeleteOrder: (id, token) => dispatch(actions.deleteOrder(id, token))
+    onDeleteOrder: (id, token, userId) =>
+      dispatch(actions.deleteOrder(id, token, userId))
   };
 };
 
