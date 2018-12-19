@@ -16,7 +16,7 @@
 @media (min-width: 500px) {
   .Logo {
     position: relative;
-    margin-left: 570%;
+    margin: auto 0;
     height: 45px;
     width: auto;
   }
