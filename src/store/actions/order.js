@@ -28,7 +28,6 @@ export const purchaseBurger = (orderData, token) => {
     axios
       .post("/orders.json?auth=" + token, orderData)
       .then(response => {
-        console.log(response.data);
         dispatch(purchaseBurgerSuccess(response.data.name, orderData));
       })
       .catch(error => {
@@ -51,7 +50,7 @@ export const fetchOrdersSuccess = orders => {
       id: key
     });
   }
-  console.log("[fetchOrderSuccess] ORDERS: ", fetchedOrders);
+
   return {
     type: actionTypes.FETCH_ORDERS_SUCCESS,
     orders: fetchedOrders
@@ -70,15 +69,13 @@ export const fetchOrdersStart = () => {
   };
 };
 
-export const fetchOrders = (token, userId) => {
+export const fetchOrders = (orders, token, userId) => {
   return dispatch => {
     dispatch(fetchOrdersStart());
     const queryParams = `?auth=${token}&orderBy="userId"&equalTo="${userId}"`;
     axios
       .get("/orders.json" + queryParams)
       .then(res => {
-        console.log("[fetchOrders] DATA:", res.data);
-
         dispatch(fetchOrdersSuccess(res.data));
       })
       .catch(err => {
@@ -87,9 +84,8 @@ export const fetchOrders = (token, userId) => {
   };
 };
 
-export const deleteOrdersSuccess = (orders, token) => {
-  console.log("SUCCESSFULY DELETED");
-  return fetchOrders(token);
+export const deleteOrdersSuccess = (orders, token, userId) => {
+  return fetchOrders(orders, token, userId);
 };
 export const deleteOrdersFail = error => {
   return {
@@ -104,15 +100,13 @@ export const deleteOrdersStart = () => {
   };
 };
 
-export const deleteOrder = (id, token) => {
+export const deleteOrder = (id, token, userId) => {
   return dispatch => {
     dispatch(deleteOrdersStart());
     axios
       .delete(`/orders/${id}.json?auth=${token}`)
       .then(res => {
-        console.log("[DELETE Orders] DATA:", res);
-        console.log("[DELETE Orders] DATA:", res.data);
-        dispatch(deleteOrdersSuccess(res.data, token));
+        dispatch(deleteOrdersSuccess(res.data, token, userId));
       })
       .catch(err => {
         dispatch(deleteOrdersFail(err));

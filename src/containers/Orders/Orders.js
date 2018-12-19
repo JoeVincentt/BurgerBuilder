@@ -20,7 +20,11 @@ class Orders extends Component {
           ingredients={order.ingredients}
           price={+order.price}
           clicked={() => {
-            this.props.onDeleteOrder(order.id, this.props.token);
+            this.props.onDeleteOrder(
+              order.id,
+              this.props.token,
+              this.props.userId
+            );
           }}
         />
       )));
