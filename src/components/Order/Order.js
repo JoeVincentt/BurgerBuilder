@@ -30,11 +30,7 @@ const order = props => {
   return (
     <div className={classes.Order}>
       {" "}
-      <div
-        id="delete"
-        style={{ float: "right", paddingBottom: "40px", cursor: "pointer" }}
-        onClick={props.clicked}
-      >
+      <div className={classes.Delete} onClick={props.clicked}>
         X
       </div>
       <p>Ingredients: {ingredientOutput}</p>

@@ -6,3 +6,11 @@
   margin: 10px auto;
   box-sizing: border-box;
 }
+
+.Delete {
+  float: right;
+  cursor: pointer;
+}
+.Delete:hover {
+  color: red;
+}
