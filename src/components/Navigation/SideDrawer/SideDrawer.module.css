@@ -6,7 +6,18 @@
   left: 0;
   top: 0;
   z-index: 200;
-  background-color: rgb(255, 230, 0);
+  background: #283048; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to left,
+    #859398,
+    #283048
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    #859398,
+    #283048
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   padding: 32px 16px;
   box-sizing: border-box;
   transition: transform 0.3s ease-out;
