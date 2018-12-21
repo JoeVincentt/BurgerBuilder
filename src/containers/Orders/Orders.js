@@ -12,24 +12,28 @@ class Orders extends Component {
   }
 
   render() {
-    let orders = <Spinner />;
-    if (!this.props.loading) {
-      return (orders = this.props.orders.map(order => (
-        <Order
-          key={order.id}
-          ingredients={order.ingredients}
-          price={+order.price}
-          clicked={() => {
-            this.props.onDeleteOrder(
-              order.id,
-              this.props.token,
-              this.props.userId
-            );
-          }}
-        />
-      )));
-    }
-    return <div>{orders}</div>;
+    return (
+      <div>
+        {!this.props.loading ? (
+          this.props.orders.map(order => (
+            <Order
+              key={order.id}
+              ingredients={order.ingredients}
+              price={+order.price}
+              clicked={() => {
+                this.props.onDeleteOrder(
+                  order.id,
+                  this.props.token,
+                  this.props.userId
+                );
+              }}
+            />
+          ))
+        ) : (
+          <Spinner />
+        )}
+      </div>
+    );
   }
 }
 
